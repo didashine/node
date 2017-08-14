@@ -1,0 +1,30 @@
+{
+  // 需要发布项目定义
+  "apps": [{
+    "name": "Ice",  // 项目名
+    "script": "server.js", // 用于启动的脚本
+    // "instances": 2   如果多核服务器追加配置
+    "env": {
+      "COMMON_VARIABLE": "true"
+    },
+    "env_production": {
+      "NODE_ENV": "production"
+    }
+  }],
+  "deploy": {
+    "production": {
+      "user": "tick",
+      "host": ["106.14.185.11"],
+      "port": "39999",
+      "ref": "origin/master",
+      "repo": "git@github.com:didashine/node.git", // 仓库地址
+      "path": "/www/ice/production", //发布到服务器哪里
+      "ssh_options": "StrictHostKeyChecking=no",
+      // "post-deploy": "npm install"
+      // "pre-deploy-local": "echo 'Deploy done!'"
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
